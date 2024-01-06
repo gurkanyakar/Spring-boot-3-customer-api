@@ -48,29 +48,17 @@ public class Main {
         customerRepository.deleteById(id);
     }
 
+    @PutMapping("{customerId}")
+    public void updateCustomer(@PathVariable("customerId") Integer id, @RequestBody NewCustomerRequest request){
+        Customer existingCustomer = customerRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Customer not found with id: " + id));
 
-    /*
-    @GetMapping("/greet")
-    public String greet(){
-        return "<h1>Hello</h1>";
+        existingCustomer.setName(request.name());
+        existingCustomer.setEmail(request.email());
+        existingCustomer.setAge(request.age());
+
+        customerRepository.save(existingCustomer);
     }
 
-    @GetMapping("/greet")
-    public GreetResponse greet(){
-        GreetResponse response = new GreetResponse("Hello",
-                List.of("Java","Javascript"),
-                new Person("John",25,30000));
-        return response;
-    }
-
-    record Person(String name,int age, double savings){
-
-    }
-    record GreetResponse(String greet,
-                         List<String> favProgrammingLanguages,
-                         Person person){
-
-    }
-    */
 
 }

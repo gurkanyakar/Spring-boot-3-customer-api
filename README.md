@@ -1,7 +1,5 @@
 # Spring-boot-3-customer-api
 
-# Spring-boot-3-customer-api
-
 ## Overview
 This repository contains a Spring Boot API for managing customer information. The API offers endpoints for adding, deleting, retrieving, and updating customer details.
 
